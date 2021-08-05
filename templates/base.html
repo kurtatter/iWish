@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+      {% if title %}
+      <title>{{ title }} - iWish</title>
+      {% else %}
+      <title>Welcome to iWish</title>
+      {% endif %}
+    </head>
+    <body class="bg-dark text-white">
+        <div class="container">
+            <header class="h-80 d-block" style="height: 80px; margin-top: 22px">
+            <div>
+              <h3 class="float-md-start mb-0">
+                  <a href="/" style="text-decoration: none; color: white">
+                      <span style="color: aquamarine">i</span><span>Wish</span>
+                  </a>
+              </h3>
+              <nav class="nav nav-masthead justify-content-center float-md-end">
+                {% for item in menu %}
+                <a style="text-transform: uppercase; color: white;" class="nav-link active" aria-current="page" href="{{item.url}}">{{item.title}}</a>
+                {% endfor %}
+              </nav>
+            </div>
+            </header>
+        {% block content %}
+        {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    </body>
+</html>

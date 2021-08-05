@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+{{ super() }}
+ 
+<form action="{{url_for('edit_wish', id=data.id)}}" method="post" class="form-contact">
+<p><label>Название: </label> <input type="text" class="form-control" name="title" value="{{data.title}}" requied />
+<p><label>Стоимость: </label> <input type="text" class="form-control" name="price" value="{{data.price}}" requied />
+<p><label>Ссылка: </label> <input type="text" class="form-control" name="url" value="{{data.url}}" requied />
+<p><label>Описание:</label>
+<p><textarea class="form-control" name="description" rows=7 cols=40>{{data.description}}</textarea>
+<p><input type="submit" class="btn btn-success" value="Добавить" />
+</form>
+{% endblock %}
