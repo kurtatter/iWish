@@ -1,3 +1,4 @@
+import os
 import sqlite3
 
 from flask import Flask
@@ -51,6 +52,8 @@ def close_db(error):
 
 @app.route('/')
 def index():
+    if not os.path.exists(DATABASE):
+        create_db()
     db = get_db()
     dbase = Wish(db)
     wishes = dbase.get_all()
