@@ -70,7 +70,6 @@ def add_wish():
         price = request.form['price']
         url = request.form['url']
         description = request.form['description']
-        print(title, price, url, description, sep='\n')
         result = dbase.add_wish(title, price, url, description)
         if not result:
             flash('Ошибка добавления мечты', category='error')
@@ -78,7 +77,6 @@ def add_wish():
             flash('Мечта добавлена успешно', category='success')
             return redirect(url_for('add_wish'))
 
-    print(dbase.get_all())
     return render_template('add_wish.html', title='Добавить мечту', menu=menu)
 
 
@@ -91,12 +89,10 @@ def edit_wish(id):
         price = request.form['price']
         url = request.form['url']
         description = request.form['description']
-        print(title, price, url, description, sep='\n')
         result = dbase.edit_wish(id, title, price, url, description)
         if not result:
             flash('Ошибка изменения мечты', category='error')
         else:
-            print("успешно!")
             return redirect(url_for('index'))
 
     return render_template('edit_wish.html', data=dbase.get_wish(id), menu=menu)
