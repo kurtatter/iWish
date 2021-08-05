@@ -15,8 +15,6 @@ menu = [
 
 DATABASE = 'wish.db'
 SECRET_KEY = 'abraC!ad@da434bra'
-# USERNAME = 'admin'
-# PASSWORD = '4166'
 
 app.config.from_object(__name__)
 
@@ -50,14 +48,15 @@ def close_db(error):
         g.link_db.close()
 
 
+if not os.path.exists(DATABASE):
+    create_db()
+
+
 @app.route('/')
 def index():
-    if not os.path.exists(DATABASE):
-        create_db()
     db = get_db()
     dbase = Wish(db)
     wishes = dbase.get_all()
-    user = {'username': 'Эльдар Рязанов'}
     return render_template('index.html', wishes=wishes, menu=menu)
 
 
