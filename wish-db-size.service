@@ -1,0 +1,10 @@
+[Unit]
+Description=get database file size every 10 minuts
+
+[Service]
+User=sam
+WorkingDirectory=/home/sam/code/
+ExecStart=/bin/bash -c 'cd /home/sam/code/iWish && python3 db_size_logger.py'
+
+[Install]
+WantedBy=multi-user.target
